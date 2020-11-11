@@ -3,6 +3,7 @@
         <thead style="display: none">
         <tr>
             <th></th>
+            <th><?php _trans('date'); ?></th>
             <th><?php _trans('item'); ?></th>
             <th><?php _trans('description'); ?></th>
             <th><?php _trans('quantity'); ?></th>
@@ -25,6 +26,12 @@
                        class="js-item-recurrence-toggler cursor-pointer fa fa-calendar-o text-muted"></i>
                     <input type="hidden" name="item_is_recurring" value=""/>
                 <?php endif; ?>
+            </td>
+            <td class="td-date">
+                <div class="input-group">
+                    <span class="input-group-addon"><?php _trans('date'); ?></span>
+	              <input type="text" name="item_date" class="input-sm form-control datepicker" value="<?php echo format_date(@$item->item_date); ?>"
+                </div>
             </td>
             <td class="td-text">
                 <input type="hidden" name="invoice_id" value="<?php echo $invoice_id; ?>">
@@ -150,7 +157,18 @@
                         <input type="hidden" name="item_is_recurring" value="<?php echo $item_recurrence_state ?>"/>
                     <?php endif; ?>
                 </td>
-
+                <!-- START OF ITEM DATE FIELDS -->
+                <td class="td-date">
+                    <div class="input-group">
+                        <span class="input-group-addon"><?php _trans('date'); ?></span>
+                        <input type="text" name="item_date" class="input-sm form-control datepicker"
+                               value="<?php echo format_date($item->item_date); ?>"
+                            <?php if ($invoice->is_read_only == 1) {
+                                echo 'disabled="disabled"';
+                            } ?>>
+                    </div>
+                </td>
+                <!-- END OF ITEM DATE FIELDS -->
                 <td class="td-text">
                     <input type="hidden" name="invoice_id" value="<?php echo $invoice_id; ?>">
                     <input type="hidden" name="item_id" value="<?php echo $item->item_id; ?>"
@@ -233,7 +251,7 @@
 
             <tr>
                 <?php if ($invoice->sumex_id == ""): ?>
-                    <td class="td-textarea">
+                    <td class="td-textarea" colspan="2">
                         <div class="input-group">
                             <span class="input-group-addon"><?php _trans('description'); ?></span>
                             <textarea name="item_description"
