@@ -13,6 +13,15 @@
                 <option value="{{{client_surname}}}">
                     <?php _trans('client_surname'); ?>
                 </option>
+                <option value="{{{client_company_name}}}">
+                    <?php _trans('client_company_name'); ?>
+                </option>
+                <option value="{{{client_contact_name}}}">
+                    <?php _trans('client_contact_name'); ?>
+                </option>
+                <option value="{{{client_contact_surname}}}">
+                    <?php _trans('client_contact_surname'); ?>
+                </option>
                 <optgroup label="<?php _trans('address'); ?>">
                     <option value="{{{client_address_1}}}">
                         <?php _trans('street_address'); ?>

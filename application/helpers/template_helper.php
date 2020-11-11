@@ -20,6 +20,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 function parse_template($object, $body)
 {
+    $object->{'client_company_name'} = format_client_company_name($object);
+    $object->{'client_contact_name'} = format_client_contact_name($object);
+    $object->{'client_contact_surname'} = format_client_contact_surname($object);
+
     if (preg_match_all('/{{{([^{|}]*)}}}/', $body, $template_vars)) {
         foreach ($template_vars[1] as $var) {
             switch ($var) {
