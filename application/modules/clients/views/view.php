@@ -229,7 +229,7 @@ foreach ($custom_fields as $custom_field) {
                 </div>
             </div>
 
-            <?php if ($client->client_surname != ""): //Client is not a company ?>
+            <?php if ($client->client_surname != "" && !is_company($client)): //Client is not a company ?>
                 <hr>
 
                 <div class="row">
