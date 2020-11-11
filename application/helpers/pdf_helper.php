@@ -91,6 +91,7 @@ function generate_invoice_pdf($invoice_id, $stream = true, $invoice_template = n
 
     $data = array(
         'invoice' => $invoice,
+        'settings' => $CI->mdl_settings->settings,
         'invoice_tax_rates' => $CI->mdl_invoice_tax_rates->where('invoice_id', $invoice_id)->get()->result(),
         'items' => $items,
         'payment_method' => $payment_method,
@@ -102,6 +103,7 @@ function generate_invoice_pdf($invoice_id, $stream = true, $invoice_template = n
     $html = $CI->load->view('invoice_templates/pdf/' . $invoice_template, $data, true);
 
     $CI->load->helper('mpdf');
+    // PDF filename created here
     return pdf_create($html, trans('invoice') . '_' . str_replace(array('\\', '/'), '_', $invoice->invoice_number),
         $stream, $invoice->invoice_password, true, $is_guest, $include_zugferd, $associatedFiles);
 }
