@@ -10,13 +10,17 @@
             $.post("<?php echo site_url('email_templates/ajax/get_content'); ?>", {
                 email_template_id: email_template_id
             }, function (data) {
+                $('.email-template-body').val(JSON.parse(data).email_template_body);
                 <?php echo(IP_DEBUG ? 'console.log(data);' : ''); ?>
                 inject_email_template(template_fields, JSON.parse(data));
+
+                update_email_template_preview();
             });
         });
 
         var selected_email_template = <?php echo $email_template ?>;
         inject_email_template(template_fields, selected_email_template);
+        update_email_template_preview();
     });
 
     $(document).ready(function() {
