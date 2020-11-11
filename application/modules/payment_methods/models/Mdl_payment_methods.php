@@ -38,6 +38,11 @@ class Mdl_Payment_Methods extends Response_Model
                 'field' => 'payment_method_name',
                 'label' => trans('payment_method'),
                 'rules' => 'required'
+            ),
+            'payment_method_instructions' => array(
+                'field' => 'payment_method_instructions',
+                'label' => trans('payment_method_instructions'),
+                'rules' => 'required'
             )
         );
     }

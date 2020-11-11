@@ -27,8 +27,18 @@
                 </label>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <input type="text" name="payment_method_name" id="payment_method_name" class="form-control"
+                <input type="textfield" name="payment_method_name" id="payment_method_name" class="form-control"
                        value="<?php echo $this->mdl_payment_methods->form_value('payment_method_name', true); ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-2 text-right text-left-xs">
+                <label for="payment_method_name" class="control-label">
+                    <?php _trans('payment_method_instructions'); ?>:
+                </label>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <textarea name="payment_method_instructions" id="payment_method_instructions" class="form-control"><?php echo $this->mdl_payment_methods->form_value('payment_method_instructions', true); ?></textarea>
             </div>
         </div>
 
